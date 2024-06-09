@@ -1,0 +1,86 @@
+﻿<Window x:Class="Persian_Date_Converter.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:local="clr-namespace:Persian_Date_Converter"
+		mc:Ignorable="d"
+        Title="MainWindow" Height="240" Width="650" ResizeMode="CanMinimize" SizeToContent="Height">
+	<Grid Margin="5">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"></RowDefinition>
+			<RowDefinition Height="Auto"></RowDefinition>
+			<RowDefinition Height="Auto"></RowDefinition>
+		</Grid.RowDefinitions>
+
+		<Grid Grid.Row="0" Margin="0 5">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto" />
+				<ColumnDefinition Width="Auto" />
+				<ColumnDefinition Width="*" />
+			</Grid.ColumnDefinitions>
+
+			<StackPanel Grid.Column="0" Orientation="Horizontal">
+				<Label Target="{Binding ElementName=TxtPersianDate}">_Persian Date:</Label>
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*"></ColumnDefinition>
+						<ColumnDefinition Width="Auto"></ColumnDefinition>
+					</Grid.ColumnDefinitions>
+					<TextBox Grid.Column="0" x:Name="TxtPersianDate" Width="78" KeyUp="TxtPersianDate_KeyUp"/>
+					<Button Grid.Column="1" x:Name="BtnToday" Click="BtnToday_Click">Today</Button>
+				</Grid>
+
+			</StackPanel>
+
+			<StackPanel Grid.Column="1" Orientation="Horizontal" Margin="5 0">
+				<Label Target="{Binding ElementName=TxtYear}">_Year:</Label>
+				<TextBox x:Name="TxtYear" Width="50" />
+				<Label Target="{Binding ElementName=TxtMonth}">_Month:</Label>
+				<TextBox x:Name="TxtMonth" Width="50" />
+				<Label Target="{Binding ElementName=TxtDay}">_Day:</Label>
+				<TextBox x:Name="TxtDay" Width="50" />
+			</StackPanel>
+
+			<TextBlock Grid.Column="2" x:Name="TxtBlkPersianDateString" VerticalAlignment="Center" FlowDirection="RightToLeft" HorizontalAlignment="Right"/>
+		</Grid>
+
+		<Grid Grid.Row="1" Margin="0 5">
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="Auto" />
+				</Grid.ColumnDefinitions>
+				<Button x:Name="BtnConvertPersianToGregorian" Grid.Column="0" Padding="4,4,4,4" Click="BtnConvertPersianToGregorian_Click">_Convert Persian to Gregorian</Button>
+				<StackPanel Grid.Column="1" HorizontalAlignment="Center">
+					<TextBlock x:Name="TbMessage" Margin="5"/>
+					<CheckBox x:Name="ChkAutoCopy" Checked="ChkAutoCopy_Checked" Unchecked="ChkAutoCopy_Checked"
+					          IsChecked="{Binding Source={x:Static local:Settings.Default}, Path=AutoCopy, Mode=OneWay}">_Automatically copy to clipboard</CheckBox>
+				</StackPanel>
+				<Button x:Name="BtnConvertGregorianToPersian" Grid.Column="2" Padding="4,4,4,4" Click="BtnConvertGregorianToPersian_Click">C_onvert Gregorian to Persian</Button>
+			</Grid>
+		</Grid>
+
+		<Grid Grid.Row="2" Margin="0 5">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto"></ColumnDefinition>
+				<ColumnDefinition Width="Auto"></ColumnDefinition>
+				<ColumnDefinition Width="*"></ColumnDefinition>
+			</Grid.ColumnDefinitions>
+
+			<StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Stretch">
+				<Label Target="{Binding ElementName=DPGregorian}">Gregorian Date:</Label>
+				<DatePicker Name="DPGregorian" SelectedDateFormat="Long" Width="180" KeyUp="DPGregorian_KeyUp"/>
+			</StackPanel>
+
+			<StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Stretch" Margin="5 0">
+				
+			</StackPanel>
+
+			<StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Stretch" HorizontalAlignment="Right">
+				<TextBlock VerticalAlignment="Center" x:Name="TbGregorianDate" MouseUp="TbGregorianDate_OnMouseUp"/>
+			</StackPanel>
+		</Grid>
+	</Grid>
+</Window>

@@ -1,0 +1,14 @@
+﻿<Application x:Class="Persian_Date_Converter.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Persian_Date_Converter"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+		<Style TargetType="TextBox">
+			<Setter Property="VerticalContentAlignment" Value="Center"/>
+		</Style>
+	    <Style TargetType="DatePicker">
+		    <Setter Property="VerticalContentAlignment" Value="Center"/>
+	    </Style>
+	</Application.Resources>
+</Application>
